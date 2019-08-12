@@ -1,0 +1,78 @@
+{
+  "name": "copi",
+  "version": "1.0.0",
+  "description": "Color Picker Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "cd copi-react && npm run build && cd .. && electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:osx": "electron-builder --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "electron-builder --win --ia32",
+    "build:win64": "electron-builder --win --x64"
+  },
+  "build": {
+    "productName": "Copi",
+    "appId": "com.electron.copi",
+    "asar": true,
+    "protocols": {
+      "name": "Copi",
+      "schemes": [
+        "copi"
+      ]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "./resources/icons/windows/icon.ico"
+    },
+    "dmg": {
+      "title": "Copi",
+      "icon": "./resources/icons/windows/icon.ico"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "./resources/icons/windows/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ],
+      "icon": "./resources/icons/windows/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "./resources/installer/",
+      "output": "./dist/",
+      "app": "."
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treezi1004/copi.git"
+  },
+  "author": "Victor Chanil Park",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/treezi1004/copi/issues"
+  },
+  "homepage": "https://github.com/treezi1004/copi#readme",
+  "devDependencies": {
+    "electron": "^6.0.1",
+    "electron-builder": "^21.2.0"
+  }
+}
